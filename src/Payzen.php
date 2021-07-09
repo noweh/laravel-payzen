@@ -4,6 +4,7 @@ namespace Noweh\Payzen;
 
 use Config;
 use http\Exception\InvalidArgumentException;
+use Illuminate\Support\Arr;
 
 class Payzen
 {
@@ -207,5 +208,18 @@ class Payzen
 		}
 
 		return substr($out, 0 , $length);
+	}
+	
+	/**
+	 * Checking Payzen response signature
+	 * @return bool
+	 */
+	public function isResponseSignatureValid(): bool
+	{
+		self::set_params(Arr::where(request()->all(), function($value, $key) {
+			return strrpos($key, 'vads_', -5) !== false;
+		}))->set_signature();
+	
+		return (request()->input('signature') && (self::get_signature() === request()->input('signature')));
 	}
 }
