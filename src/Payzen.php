@@ -7,11 +7,9 @@ use http\Exception\InvalidArgumentException;
 
 class Payzen
 {
-	private $_siteId;
 	private $_key;
 	private $_url;
 	private $_params;
-	private $_ctx_mode;
 	private $_nb_products = 0;
 
 	/**
@@ -22,8 +20,11 @@ class Payzen
 		$this->_key = Config::get("payzen.key");
 		$this->_url = Config::get("payzen.url");
 		$this->_params = Config::get("payzen.params");
-		$this->_siteId = Config::get('payzen.site_id');
-		$this->_ctx_mode = Config::get("payzen.env");
+		$this->set_params([
+			'vads_site_id' => Config::get('payzen.site_id'),
+			'vads_ctx_mode' => Config::get("payzen.env"),
+			'vads_trans_date' => gmdate('YmdHis')
+		]);
 	}
 
 	/**
@@ -168,7 +169,6 @@ class Payzen
 		foreach ($this->_params as $key => $value) {
 			$html_form .= '<input type="hidden" name="' . $key . '" value="' . $value . '">';
 		}
-		$html_form .= '<input type="hidden" name="vads_trans_date" value="'.gmdate('YmdHis').'">';
 		$html_form .= $button;
 		$html_form .= "</form>";
 		return $html_form;
