@@ -35,7 +35,6 @@ Now we are finally ready to use the package! Here is a little example:
 ```php
      $blocks_html = \Payzen::set_amount(300)
         ->set_trans_id(123456)
-        ->set_trans_date(gmdate('YmdHis'))
         ->set_order_info(\Payzen::ascii_transcode('an information', 'an', 255, true))
         ->set_order_info2(\Payzen::ascii_transcode('another information', 'an', 255, true))
         ->set_url_return(request()->fullUrl())
@@ -146,4 +145,11 @@ boolean $truncate allow returning truncated result if the transcoded $input leng
 #### Example
 ```php
     \Payzen::ascii_transcode('123nd', 'n', 5, true);
+```
+
+### check signature in response
+Checking Payzen response signature
+#### Example
+```php
+    \Payzen::isResponseSignatureValid();
 ```
