@@ -1,5 +1,9 @@
 # Laravel-Payzen
 
+![SoundCloud](https://img.shields.io/static/v1?style=flat-square&message=Payzen&color=blue&logo=Payzen&logoColor=FFFFFF&label=)
+![php](https://img.shields.io/badge/Laravel-v5/6-828cb7.svg?style=flat-square&logo=Laravel&color=FF2D20)
+[![MIT Licensed](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
+
 The library provides an easy and fast Payzen form creation.
 This helps to instanciate all required parameters and create the form to access to payment interface.
 To know required parameters, go to https://payzen.io/en-EN/form-payment/quick-start-guide/sending-a-payment-form-via-post.html
