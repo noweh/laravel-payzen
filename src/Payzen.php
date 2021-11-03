@@ -32,11 +32,11 @@ class Payzen
 	 * Magic method that allows you to use getters and setters on each payzen parameters
 	 * Remember to not keep the 'vads' prefix in your accessor function name
 	 * @param String $method name of the accessor
-	 * @param array [optional] $args list of arguments
+	 * @param array $args list of arguments
 	 * @return Payzen
 	 * @throws InvalidArgumentException
 	 */
-	public function __call(string $method, $args): Payzen
+	public function __call(string $method, array $args): Payzen
 	{
 		if (function_exists($method)) {
 			return call_user_func_array($method, $args);
@@ -50,16 +50,17 @@ class Payzen
 			}
 
 			$this->_params["vads_{$matches[1]}"] = $args[0];
-			return $this;
 		}
+
+        return $this;
 	}
 
 	/**
 	 * Method to do massive assignment of parameters
-	 * @param $params array associative array of Payzen parameters
+	 * @param array $params associative array of Payzen parameters
 	 * @return Payzen
 	 */
-	public function set_params($params)
+	public function set_params(array $params)
 	{
 		$this->_params = array_merge($this->_params, $params);
 		return $this;
@@ -103,7 +104,7 @@ class Payzen
 
 	/**
 	 * Return Payzen signature
-	 * @return      String Payzen signature
+	 * @return String Payzen signature
 	 */
 	public function get_signature()
 	{
@@ -122,7 +123,7 @@ class Payzen
 		if ($amount) {
 			$this->_params['vads_amount'] = 100 * $amount;
 		} else {
-			array_where($this->_params, function ($value, $key) {
+            Arr::where($this->_params, function ($value, $key) {
 				if (preg_match("/vads_product_amount([0-9]+)/", $key, $match)) {
 					$this->_params['vads_amount'] += $this->_params["vads_product_qty{$match[1]}"] * $value;
 				}
@@ -133,17 +134,17 @@ class Payzen
 
 	/**
 	 * Get total amount of the order
-	 * @param $decimal boolean [optional] bool $decimal if true, you get a decimal otherwise you get standard Payzen amount format (int)
+	 * @param boolean $decimal [optional] bool $decimal if true, you get a decimal otherwise you get standard Payzen amount format (int)
 	 * @return float
 	 */
-	public function get_amount($decimal = true): float
+	public function get_amount(bool $decimal = true): float
 	{
 		return $decimal ? $this->_params['vads_amount'] / 100 : $this->_params['vads_amount'];
 	}
 
 	/**
 	 * Add a product to the order
-	 * @param $product array $product , must have the following keys : 'label,amount,type,ref,qty'
+	 * @param array $product $product , must have the following keys : 'label,amount,type,ref,qty'
 	 * @return Payzen
 	 */
 	public function add_product(array $product): Payzen
@@ -161,8 +162,8 @@ class Payzen
 
 	/**
 	 * Return HTML Payzen form
-	 * @param       String $button html code of the submit button
-	 * @return      \Illuminate\Support\HtmlString|string
+	 * @param string $button html code of the submit button
+	 * @return string
 	 */
 	public function get_form(string $button): string
 	{
