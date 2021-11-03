@@ -1,0 +1,15 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+
+    paths:
+        - src
+
+    # The level 8 is the highest level
+    level: 5
+
+    ignoreErrors:
+        - '#Call to static method [a-zA-Z0-9\\_]+\(\) on an unknown class [a-zA-Z0-9\\_]+#'
+
+    checkMissingIterableValueType: false
