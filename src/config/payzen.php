@@ -11,7 +11,6 @@ return [
 		'vads_action_mode' => 'INTERACTIVE',
 		'vads_payment_config' => 'SINGLE',
 		'vads_version' => 'V2',
-		'vads_trans_date' => gmdate('YmdHis'),
 		'vads_currency' => '978'
     ]
 ];

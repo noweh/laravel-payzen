@@ -122,7 +122,7 @@ class Payzen
 		if ($amount) {
 			$this->_params['vads_amount'] = 100 * $amount;
 		} else {
-			array_where($this->_params, function ($value, $key) {
+            Arr::where($this->_params, function ($value, $key) {
 				if (preg_match("/vads_product_amount([0-9]+)/", $key, $match)) {
 					$this->_params['vads_amount'] += $this->_params["vads_product_qty{$match[1]}"] * $value;
 				}
