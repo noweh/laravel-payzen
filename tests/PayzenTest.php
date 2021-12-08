@@ -17,7 +17,7 @@ class PayzenTest extends TestCase
 
     public function testSignature(): void
     {
-        $this->assertEquals(
+        $this->assertSame(
             'ZbUfFXw5gO8nZL7nrMWd3OtvrFMehKe1PxsbNB9SRbk=',
             Payzen::set_trans_date(20211103100443)->set_signature()->get_signature()
         );
@@ -58,8 +58,8 @@ class PayzenTest extends TestCase
             )
             ->set_amount()
         ;
-        $this->assertEquals(705, $instance->get_amount());
-        $this->assertEquals(70500, $instance->get_amount(false));
+        $this->assertSame(705.0, $instance->get_amount());
+        $this->assertSame(70500.0, $instance->get_amount(false));
     }
 
     public function testPaymentForm(): void
