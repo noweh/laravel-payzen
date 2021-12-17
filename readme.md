@@ -3,7 +3,8 @@
 [![Payzen](https://img.shields.io/static/v1?message=Payzen&color=blue&logo=Payzen&logoColor=FFFFFF&label=)](https://payzen.io/en-EN/)
 [![Laravel](https://img.shields.io/badge/Laravel-v5/6/7/8-828cb7.svg?logo=Laravel&color=FF2D20)](https://laravel.com/)
 [![Run Tests](https://github.com/noweh/laravel-payzen/actions/workflows/run-tests.yml/badge.svg?branch=master)](https://github.com/noweh/laravel-payzen/actions/workflows/run-tests.yml)
-[![MIT Licensed](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![MIT Licensed](https://img.shields.io/github/license/noweh/laravel-payzen)](LICENSE)
+[![last version](https://img.shields.io/packagist/v/noweh/laravel-payzen)](https://packagist.org/packages/noweh/laravel-payzen)
 [![Downloads](https://img.shields.io/packagist/dt/noweh/laravel-payzen)](https://packagist.org/packages/noweh/laravel-payzen)
 
 The library provides an easy and fast Payzen form creation.
